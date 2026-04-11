@@ -1,7 +1,7 @@
 # CLARSTA -- Convex-constrained Linear Approximation Random Subspace Trust-region Algorithm
 ![GitHub](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
 
-This is the source code of the Convex-constrained Linear Approximation Random Subspace Trust-region Algorithm (CLARSTA) proposed in our [paper](https://arxiv.org/abs/2506.20335).  
+This repository contains the source code for the Convex-constrained Linear Approximation Random Subspace Trust-region Algorithm (CLARSTA), introduced in our [paper](https://arxiv.org/abs/2506.20335).  
 
 CLARSTA is a Python package designed for large-scale convex-constrained optimization problems where derivative information is unavailable. The feasible set is assumed to be convex, closed, and to have a nonempty interior. The only requirement is access to a projection operator onto the constraint set.
 
