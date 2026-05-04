@@ -177,9 +177,9 @@ def solve_main(objfun, x0, deltabeg, deltaend, maxfun, params, p, prand, fmin_tr
             if not (proj_C is None or len(proj_C) == 0):
                 for proj_idx in range(len(proj_C)):
                     proj_fnc = proj_C[proj_idx]
-                    proj_C_red.append(lambda x: np.dot(model.Q.T, proj_fnc(model.Q.dot(x))))
+                    proj_C_red.append(lambda x: np.dot(model.Q.T, proj_fnc(xk + np.dot(model.Q, x)) - xk))
             sk_red, _, _ = ctrsbox(np.zeros((model.p,)), np.zeros((model.p,)), gk, Hk, -1e20 * np.ones((model.p,)), 1e20 * np.ones((model.p,)), proj_C_red, delta)
-            pred_reduction = -np.dot(sk_red, gk)
+            pred_reduction =  -(np.dot(gk, sk_red) + 0.5 * np.dot(sk_red, Hk.dot(sk_red)))
             
             sk_full = model.Q.dot(sk_red)
             if proj_C is None or len(proj_C) == 0:
